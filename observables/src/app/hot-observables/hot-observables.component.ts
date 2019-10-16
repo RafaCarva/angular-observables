@@ -48,7 +48,7 @@ ngOnInit() {
 
     const multicasted = this.myObservable.pipe(share());
 
-    //multicasted.connect();
+    // multicasted.connect();
 
     // subscriber 1
     this.s1 = 'waiting for interval...';
