@@ -25,14 +25,14 @@ export class SubjectsComponent implements OnInit {
     this.asyncSubject = new AsyncSubject<DataModel>();
     this.behaviorSubject = new BehaviorSubject<DataModel>({timestamp: 0, data: 0});
 
-    this.dataService.dataObervable.subscribe(this.subject);
-    this.dataService.dataObervable.subscribe(this.replaySubject);
-    this.dataService.dataObervable.subscribe(this.asyncSubject);
-    this.dataService.dataObervable.subscribe(this.behaviorSubject);
+    this.dataService.dataObservable.subscribe(this.subject);
+    this.dataService.dataObservable.subscribe(this.replaySubject);
+    this.dataService.dataObservable.subscribe(this.asyncSubject);
+    this.dataService.dataObservable.subscribe(this.behaviorSubject);
   }
 
   connect() {
-    this.dataService.dataObervable.connect();
+    this.dataService.dataObservable.connect();
   }
 
 }

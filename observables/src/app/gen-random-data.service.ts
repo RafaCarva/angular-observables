@@ -8,10 +8,11 @@ import { DataModel } from './data-model';
 })
 export class GenRandomDataService {
 
-  public dataObervable: ConnectableObservable<DataModel>;
+  // Esse é quem vai "dar subscribe"
+  public dataObservable: ConnectableObservable<DataModel>;
 
   constructor() {
-    this.dataObervable = new Observable(
+    this.dataObservable = new Observable(
       (observer: Observer<DataModel>) => {
         let n = 0;
         console.log('Observable created');
@@ -22,15 +23,15 @@ export class GenRandomDataService {
           console.log(n);
           if (n <= 10) {
             let timestamp = Math.round(Math.random() * 2000 + 500);
+            // O retorno é um DataModel (veja: data-model.ts)
             observer.next({timestamp: timestamp, data: n});
             setTimeout(f, timestamp);
           }
           else {
             observer.complete();
           }
-        }
+        };
         f();
-
       }
     ).pipe(publish()) as ConnectableObservable<DataModel>;
   }
