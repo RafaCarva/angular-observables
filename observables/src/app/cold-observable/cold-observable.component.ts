@@ -29,9 +29,9 @@ export class ColdObservableComponent implements OnInit {
         let id = setInterval( () => {
           i++;
           console.log('from Observable: ', i);
-          if (i === 15) {observer.complete(); }
+          if (i === 10) {observer.complete(); }
           else if (i % 2 === 0) {
-            observer.next(i);// Esse 'i' é o que vai ser enviado para a 1º func do subscription.
+            observer.next(i); // Esse 'i' é o que vai ser enviado para a 1º func do subscription.
           }
         }, 1000);
         return () => {
@@ -39,6 +39,12 @@ export class ColdObservableComponent implements OnInit {
         };
       }
     );
+
+
+    /**
+     * A cada subscribe o observable vai "gerar uma fonte de dados"
+     * por isso é "cold".
+     */
 
     this.s1 = 'waiting for interval...';
     this.subscription1 = myIntervalObservable.subscribe(
